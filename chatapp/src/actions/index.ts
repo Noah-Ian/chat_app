@@ -26,8 +26,7 @@ export interface MessageReceivedAction{
 
 export interface PopulatedUserListAction{
     type: typeof types.USER_LIST;
-    id: number;
-    name: string;
+    users: User[];
 }
 
 //Chat Actions
@@ -62,6 +61,5 @@ export const messageReceived = (message: string, author: string): MessageReceive
 
 export const populatedUserList = (users: User[]): PopulatedUserListAction =>({
     type: types.USER_LIST,
-    id: nextUserId++,
-    name: users.map(user => user.name).join(', ')
+    users
 });
