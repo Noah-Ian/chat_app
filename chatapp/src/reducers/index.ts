@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 import messages from './messages';
-import user from './users';
-import type {RootState} from '../types/index';
+import users from './users';
 
-const chat = combineReducers<RootState>({
+
+const chat = combineReducers({
     messages,
-    user
+    users
 });
 
 export default chat;

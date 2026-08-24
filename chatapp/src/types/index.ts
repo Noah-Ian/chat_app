@@ -11,5 +11,5 @@ export interface User{
 
 export interface RootState{
     messages: Message[];
-    user:  User[];
+    users:  User[];
 }
