@@ -4,6 +4,6 @@ import SideBarComponent from "../components/Sidebar";
 
 const mapStateToProps = (state: RootState) => ({
     users: state.users
-})
+});
 
-export const Sidebar = connect(mapStateToProps)(SideBarComponent)
+export const Sidebar = connect(mapStateToProps)(SideBarComponent);
