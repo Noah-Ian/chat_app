@@ -7,6 +7,7 @@ interface SidebarProps{
 
 const SideBar: React.FC<SidebarProps> = ({users}) =>(
     <aside id="sidebar"  className="sidebar">
+        <h2>Users</h2>
         <ul>
             {users.map((user)=>(
                 <li key={user.id}>{user.name}</li>

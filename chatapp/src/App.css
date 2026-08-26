@@ -1,36 +1,42 @@
 #container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 40px;
+  grid-template-columns: 250px 1fr; /* Fixed 250px sidebar, flexible main area */
+  grid-template-rows: 1fr 50px;     /* Flexible message area, 50px bottom input */
   grid-template-areas:
     "sidebar main"
     "sidebar footer";
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 #sidebar {
   grid-area: sidebar;
-  background-color: #f4f4f4;
+  background-color: #f0f0f0;
   border-right: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px;
+  overflow-y: auto;
 }
 
 #main {
   grid-area: main;
-  padding: 10px;
-  overflow-y: scroll;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 #new-message {
   grid-area: footer;
   border-top: 1px solid #ccc;
+  background-color: #fff;
 }
 
 #new-message input {
   width: 100%;
   height: 100%;
   border: none;
-  padding-left: 10px;
+  padding: 0 15px;
   font-size: 16px;
   outline: none;
 }

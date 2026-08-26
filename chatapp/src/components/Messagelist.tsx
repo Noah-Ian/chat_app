@@ -8,6 +8,7 @@ interface MessageListProps{
 
 const MessageList: React.FC<MessageListProps> = ({messages})=>(
     <section id="messages-List">
+        <h2>Messages</h2>
         <ul>
             {messages.map((msg)=>(
                 <Message key={msg.id} message={msg.message} author={msg.author}/>

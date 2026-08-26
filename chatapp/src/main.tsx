@@ -1,10 +1,35 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+import './index.css';
+import App from './App';
+import reducers from './reducers';
+import handleNewMessage from './saga/index';
+import setupSocket from './sockets';
+import username from './utils/names';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+  reducer: reducers,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: false,
+    }).concat(sagaMiddleware),
+});
+
+const socket = setupSocket(store.dispatch, username);
+
+sagaMiddleware.run(handleNewMessage, { socket, username });
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+
+root.render(
+  <Provider store={store}>
     <App />
-  </StrictMode>,
-)
+  </Provider>
+);
